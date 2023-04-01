@@ -1,0 +1,18 @@
+{
+    "name": "haron.moreira/bebidas_chabas",
+    "require": {
+        "twbs/bootstrap": "^5.2",
+        "phpmailer/phpmailer": "^6.8"
+    },
+    "autoload": {
+        "psr-4": {
+            "HaronMoreira\\BebidasChabas\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "haron.moreira",
+            "email": "haron.cm@gmail.com"
+        }
+    ]
+}
