@@ -1,3 +1,5 @@
 \vendor
 
 env.json
+\dist
+\plugins
