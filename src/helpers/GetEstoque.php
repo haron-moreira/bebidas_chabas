@@ -3,7 +3,6 @@
 namespace HaronMoreira\BebidasChabas\helpers;
 
 use HaronMoreira\BebidasChabas\services\ConexaoBanco;
-use PDO;
 
 class GetEstoque
 {
@@ -15,7 +14,7 @@ class GetEstoque
         $sth = $pdo->prepare($query);
         $sth->execute();
 
-        return $sth->fetchAll(PDO::FETCH_ASSOC);
+        return $sth->fetchAll(\PDO::FETCH_ASSOC);
     }
 
 }
