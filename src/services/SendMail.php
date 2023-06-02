@@ -68,7 +68,7 @@ class SendMail
                 </table>               
               </div>
             
-              <div class="footer" style="padding: 0;box-sizing: border-box;margin: 0;font-family: &quot;Bree Serif&quot;, sans-serif;width: 100vw;height: 15vh;background-color: #0000f9;color: #FFF;display: flex;flex-direction: row;justify-content: center;align-items: center;text-align: center">
+              <div class="footer" style="padding: 0;box-sizing: border-box;margin: 0;font-family: &quot;Bree Serif&quot;, sans-serif;width: 100vw;height: 15vh;background-color: #FF2C00;color: #FFF;display: flex;flex-direction: row;justify-content: center;align-items: center;text-align: center">
                 <p>Bebidas Chabás - 2023</p>
               </div>
             </body>

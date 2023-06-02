@@ -8,7 +8,7 @@ class Login
     {
         $conexao = ConexaoBanco::Conexao();
 
-        $query = "SELECT nm_usuario, id_usuario, nv_acesso FROM usuario WHERE login_usuario = :login and senha_usuario = :senha;";
+        $query = "SELECT nm_usuario, id_usuario, nv_acesso FROM usuario WHERE login_usuario = :login and senha_usuario = :senha and status = 1;";
 
         $sth = $conexao->prepare($query);
         $sth->bindValue(":login", $login);
