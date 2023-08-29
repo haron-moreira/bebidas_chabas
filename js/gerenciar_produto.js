@@ -10,9 +10,11 @@ function ativa(id_produto, nome_produto)
     document.getElementById("id_produto_ativa").value = id_produto
 }
 
-function atualiza(qtd_atual, id_produto, nome_produto)
+function atualiza(qtd_atual, id_produto, nome_produto, valor_unitario)
 {
     document.getElementById("nome_produto_atualiza").value = nome_produto
     document.getElementById("id_produto_atualiza").value = id_produto
     document.getElementById("qtd_atual").value = qtd_atual
+    document.getElementById("valor_unitario").value = valor_unitario
+
 }

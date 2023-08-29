@@ -33,6 +33,15 @@ class Menu
                                                         </p>
                                                     </a>
                                                 </li>
+                                                
+                                                <li class="nav-item">
+                                                    <a href="venda.php" class="nav-link">
+                                                        <i class="nav-icon fas fa-cart-arrow-down"></i>
+                                                        <p>
+                                                            Registrar Venda
+                                                        </p>
+                                                    </a>
+                                                </li>
                 
                                                 <li class="nav-item">
                                                     <a href="#" class="nav-link">
@@ -81,6 +90,15 @@ class Menu
                                                         <i class="nav-icon fas fa-home"></i>
                                                         <p>
                                                             Home
+                                                        </p>
+                                                    </a>
+                                                </li>
+                                                
+                                                <li class="nav-item">
+                                                    <a href="venda.php" class="nav-link">
+                                                        <i class="nav-icon fas fa-cart-arrow-down"></i>
+                                                        <p>
+                                                            Registrar Venda
                                                         </p>
                                                     </a>
                                                 </li>

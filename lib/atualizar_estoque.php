@@ -12,7 +12,8 @@ else {
     $qtd_nova = intval($_POST['qtd_recebida']) + intval($_POST['qtd_atual']);
 }
 
-if (AtualizaProduto::Atualizar(htmlspecialchars($_POST['id_produto_atualiza']), $qtd_nova)) {
+
+if (AtualizaProduto::Atualizar(htmlspecialchars($_POST['id_produto_atualiza']), $qtd_nova, htmlspecialchars($_POST['valor_unitario']))) {
     echo "<script>
             alert('Estoque do produto " . $_POST['nome_produto_atualiza'] . " atualizado com sucesso.');
             window.location.href = '../produtos.php';

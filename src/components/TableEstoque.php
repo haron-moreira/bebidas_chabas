@@ -26,6 +26,7 @@ class TableEstoque
                 <td>'.$produto['qtd_volume'].' '.$produto['tipo_volume'].'</td>
                 <td>'.$produto['fabricante'].'</td>
                 <td>'.$produto['qtd_estoque'].'</td>
+                <td>R$ '.number_format($produto['valor_unitario'] / 100, 2,',', '.') .'</td>
                 <td>'.$comercializado.'</td>
                 <td>
                 <div class="btn-group">
@@ -36,7 +37,7 @@ class TableEstoque
                     echo '<button type="button" data-toggle="modal" style="width: 8vw" data-target="#modal-default_4" onclick="ativa(`'.$produto['id_produto'].'`, `'.$produto['nome_produto'].'`)" class="btn btn-success">Ativar</button>';
                 }
                 echo '
-                    <button type="button" data-toggle="modal" style="width: 8vw" data-target="#modal-default_3" onclick="atualiza(`'.$produto['qtd_estoque'].'`, `'.$produto['id_produto'].'`, `'.$produto['nome_produto'].'`)" class="btn btn-info">Atualizar</button>
+                    <button type="button" data-toggle="modal" style="width: 8vw" data-target="#modal-default_3" onclick="atualiza(`'.$produto['qtd_estoque'].'`, `'.$produto['id_produto'].'`, `'.$produto['nome_produto'].'`,`'.number_format($produto['valor_unitario'] / 100, 2,',', '.').'`)" class="btn btn-info">Alterar</button>
                 </div>
                 </td>
             </tr>';

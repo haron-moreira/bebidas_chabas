@@ -204,7 +204,7 @@ $nm_usuario = $_SESSION['nomeUsuario'];
                         <div class="modal-body">
                             <div class="card card-primary">
                                 <div class="card-header">
-                                    <h3 class="card-title">Deseja mesmo atualizar o estoque?</h3>
+                                    <h3 class="card-title">Deseja mesmo alterar o produto?</h3>
                                 </div>
                                 <!-- /.card-header -->
                                 <!-- form start -->
@@ -221,7 +221,11 @@ $nm_usuario = $_SESSION['nomeUsuario'];
                                         </div>
                                         <div class="form-group">
                                             <label for="qtd_recebida">Quantidade Para Adicionar</label>
-                                            <input type="text" class="form-control" id="qtd_recebida" name="qtd_recebida" placeholder="100">
+                                            <input type="number" min="0" class="form-control" id="qtd_recebida" name="qtd_recebida" placeholder="100">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="valor_unitario">Valor</label>
+                                            <input type="text" class="form-control" id="valor_unitario" name="valor_unitario">
                                         </div>
                                     </div>
                                 </form>
@@ -314,6 +318,7 @@ $nm_usuario = $_SESSION['nomeUsuario'];
                                         <th>Volume Unitário</th>
                                         <th>Fabricante</th>
                                         <th>Qtd em Estoque</th>
+                                        <th>Valor Unitário</th>
                                         <th>A venda?</th>
                                         <th>Ações</th>
 
@@ -329,6 +334,7 @@ $nm_usuario = $_SESSION['nomeUsuario'];
                                         <th>Volume Unitário</th>
                                         <th>Fabricante</th>
                                         <th>Qtd em Estoque</th>
+                                        <th>Valor Unitário</th>
                                         <th>A venda?</th>
                                         <th>Ações</th>
                                     </tr>
