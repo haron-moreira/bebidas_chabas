@@ -20,8 +20,10 @@ class GeraPdfNotaVenda
         $tableBody = "";
         $id = 1;
 
-        $valor_final = "R$ " . number_format($produtos['soma']/100, 2,",", ".");
-
+        $valor_final = "R$ " . number_format($produtos['soma'], 2,",", ".");
+        error_log($produtos['soma']);
+        error_log($produtos['soma']/100);
+        error_log($valor_final);
         foreach ($produtos['produtos'] as $key => $produto) {
 
             $valor_unitario = "R$ " . number_format($produto['valor_unitario']/100, 2,",", ".");

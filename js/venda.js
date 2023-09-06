@@ -82,7 +82,7 @@ function adicionar_para_venda(elemento) {
             valor.textContent = "R$ "+ (elemento.getAttribute('value') / 100).toFixed(2).toString();
 
             let qtd_selecionada = document.createElement("td");
-            qtd_selecionada.innerHTML = "<input id='"+elemento.id+"_qtd' onchange='somaMultipla(this)' price='"+elemento.getAttribute('value')+"' value='1' type='number' min='0' style='width: 3vw;'>"
+            qtd_selecionada.innerHTML = "<input id='"+elemento.id+"_qtd' onchange='somaMultipla(this)' price='"+elemento.getAttribute('value')+"' value='1' type='number' min='0' style='width: 80px;padding: 1vh'>"
 
             row.appendChild(id);
             row.appendChild(nome);
@@ -98,7 +98,7 @@ function adicionar_para_venda(elemento) {
             json_produtos = {"soma":soma.toFixed(2),
                                 "produtos": produtosList }
 
-            /*console.log(json_produtos)*/
+            console.log(json_produtos)
 }
 
 function somaMultipla(elemento) {
@@ -111,9 +111,9 @@ function somaMultipla(elemento) {
         soma = soma + json_produtos.produtos[produto].quantidade * json_produtos.produtos[produto].valor_unitario
     }
 
-    json_produtos.soma = soma
+    json_produtos.soma = soma / 100
 
-    /*console.log(json_produtos)*/
+    console.log(json_produtos)
     soma = soma / 100
     valorFim.innerHTML = `<b>Valor final da venda: R$ ${soma.toFixed(2).toLocaleString('pt-BR')}<b>`
 
