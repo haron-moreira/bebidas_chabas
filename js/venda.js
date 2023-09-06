@@ -98,7 +98,7 @@ function adicionar_para_venda(elemento) {
             json_produtos = {"soma":soma.toFixed(2),
                                 "produtos": produtosList }
 
-            console.log(json_produtos)
+            /*console.log(json_produtos)*/
 }
 
 function somaMultipla(elemento) {
@@ -113,7 +113,7 @@ function somaMultipla(elemento) {
 
     json_produtos.soma = soma / 100
 
-    console.log(json_produtos)
+    /*console.log(json_produtos)*/
     soma = soma / 100
     valorFim.innerHTML = `<b>Valor final da venda: R$ ${soma.toFixed(2).toLocaleString('pt-BR')}<b>`
 
