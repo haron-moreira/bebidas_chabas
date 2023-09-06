@@ -57,7 +57,7 @@ produto.addEventListener("keyup", () => {
 function removeall() {
     let tbody = document.getElementById("tbody");
     tbody.innerHTML = "";
-    json_produtos = {}
+    json_produtos = { "produtos": []}
     produtosList = {}
     soma = 0
     valorFim.innerHTML = `<b>Valor final da venda: R$ 0,00<b>`
@@ -98,7 +98,7 @@ function adicionar_para_venda(elemento) {
             json_produtos = {"soma":soma.toFixed(2),
                                 "produtos": produtosList }
 
-            console.log(json_produtos)
+            /*console.log(json_produtos)*/
 }
 
 function somaMultipla(elemento) {
@@ -113,7 +113,7 @@ function somaMultipla(elemento) {
 
     json_produtos.soma = soma
 
-    console.log(json_produtos)
+    /*console.log(json_produtos)*/
     soma = soma / 100
     valorFim.innerHTML = `<b>Valor final da venda: R$ ${soma.toFixed(2).toLocaleString('pt-BR')}<b>`
 
@@ -126,13 +126,30 @@ function concluir() {
         data: {'produtos': json_produtos},
         dataType: 'json'
     })
-        .fail(function(result) {
+        .always(function(result) {
 
-        })
-        .done(function(result){
-            alert("Venda realizada com sucesso");
-            /*console.log(result)*/
-            location.reload();
+            switch (result.status) {
+                case 200:
+                    alert("Venda realizada com sucesso");
 
+                    json_produtos = JSON.stringify(json_produtos)
+                    json_produtos = encodeURIComponent(json_produtos)
+
+                    window.open("/api/getNota.php?compra=" + json_produtos, "_blank");
+                    location.reload();
+                    break;
+
+                case 401:
+                    alert(`O produto ${result.responseJSON.produto} possui somente ${result.responseJSON.qtd} em estoque. \nPortanto a venda não pode ser finalizada.`);
+                    break;
+
+                case 500:
+                    alert("Erro ao processar a venda");
+                    break;
+
+                default:
+                    alert("Erro interno");
+                    break;
+            }
         });
 }

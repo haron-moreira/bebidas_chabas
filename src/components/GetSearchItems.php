@@ -14,7 +14,7 @@ class GetSearchItems
 
         $query = "SELECT nome_produto, qtd_estoque, valor_unitario, id_produto 
                     FROM produto 
-                        WHERE comercializado = 1 AND nome_produto like :search;";
+                        WHERE qtd_estoque > 0 AND comercializado = 1 AND nome_produto like :search;";
         $sth = $pdo->prepare($query);
         $sth->bindValue(":search", $search);
         $sth->execute();
