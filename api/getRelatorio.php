@@ -2,6 +2,12 @@
 
 use HaronMoreira\BebidasChabas\services\GerarRelatorioVendas;
 
-require 'vendor/autoload.php';
+require '../vendor/autoload.php';
 
-GerarRelatorioVendas::Gerar();
+if (GerarRelatorioVendas::Gerar()) {
+    header("location: ../files/relatorio_vendas.csv");
+    die();
+} else {
+    die("Erro ao baixar o relatório...");
+}
+
