@@ -21,9 +21,7 @@ class GeraPdfNotaVenda
         $id = 1;
 
         $valor_final = "R$ " . number_format($produtos['soma'], 2,",", ".");
-        error_log($produtos['soma']);
-        error_log($produtos['soma']/100);
-        error_log($valor_final);
+
         foreach ($produtos['produtos'] as $key => $produto) {
 
             $valor_unitario = "R$ " . number_format($produto['valor_unitario']/100, 2,",", ".");
@@ -50,7 +48,7 @@ class GeraPdfNotaVenda
 <header style="display: flex; flex-direction: column; align-items: center; justify-content: center;">
   <h1>Registro de Venda</h1>
   <h5>Via única</h5>
-  <h3>Adega do Pretão</h3>
+  <h3>Bebidas Chabás</h3>
   <p>Data/hora: '.$agora.'</p>
 </header>
 <main style="text-align: center;">
