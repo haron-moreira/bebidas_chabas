@@ -104,6 +104,7 @@ $nm_usuario = $_SESSION['nomeUsuario'];
                         <h1 class="m-0">Home</h1>
                     </div><!-- /.col -->
                     <div class="col-sm-6">
+                        <a href="lib/relatorio_vendas.php"><button class="btn btn-info float-sm-right"><i class="fa fa-download"></i>  Relatório de Vendas</button></a>
                     </div><!-- /.col -->
                 </div><!-- /.row -->
             </div><!-- /.container-fluid -->
