@@ -36,13 +36,13 @@ class TableUsers
                 <div class="btn-group">
                 ';
             if ($usuario['status']) {
-                echo '<button type="button" data-toggle="modal" style="width: 8vw" data-target="#modal-default_2" onclick="remove(`' . $usuario['id_usuario'] . '`, `' . $usuario['nm_usuario'] . '`)" class="btn btn-danger">Desativar</button>';
+                echo '<button type="button" data-toggle="modal" style="width: fit-content" data-target="#modal-default_2" onclick="remove(`' . $usuario['id_usuario'] . '`, `' . $usuario['nm_usuario'] . '`)" class="btn btn-danger">Desativar</button>';
             } else {
-                echo '<button type="button" data-toggle="modal" style="width: 8vw" data-target="#modal-default_4" onclick="ativa(`' . $usuario['id_usuario'] . '`, `' . $usuario['nm_usuario'] . '`)" class="btn btn-success">Ativar</button>';
+                echo '<button type="button" data-toggle="modal" style="width: fit-content" data-target="#modal-default_4" onclick="ativa(`' . $usuario['id_usuario'] . '`, `' . $usuario['nm_usuario'] . '`)" class="btn btn-success">Ativar</button>';
             }
             echo '
-                    <button type="button" data-toggle="modal" style="width: 8vw" data-target="#modal-default_3" onclick="atualiza(`' . $usuario['nv_acesso'] . '`, `' . $usuario['id_usuario'] . '`, `' . $usuario['nm_usuario'] . '`)" class="btn btn-primary">Alterar</button>
-                    <button type="button" data-toggle="modal" style="width: 8vw" onclick="reset_senha(`' . $usuario['id_usuario'] . '`, `' . $usuario['nm_usuario'] . '`)" class="btn btn-warning">Reset de Senha</button>
+                    <button type="button" data-toggle="modal" style="width: fit-content" data-target="#modal-default_3" onclick="atualiza(`' . $usuario['nv_acesso'] . '`, `' . $usuario['id_usuario'] . '`, `' . $usuario['nm_usuario'] . '`)" class="btn btn-primary">Alterar</button>
+                    <button type="button" data-toggle="modal" style="width: fit-content" onclick="reset_senha(`' . $usuario['id_usuario'] . '`, `' . $usuario['nm_usuario'] . '`)" class="btn btn-warning">Reset de Senha</button>
                 </div>
                 </td>
             </tr>';

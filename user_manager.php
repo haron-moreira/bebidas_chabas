@@ -98,7 +98,7 @@ $nm_usuario = $_SESSION['nomeUsuario'];
             <div class="container-fluid">
                 <div class="row mb-2">
                     <div class="col-sm-6">
-                        <h1 class="m-0">Ver Produtos</h1>
+                        <h1 class="m-0">Ver Usuários</h1>
                     </div><!-- /.col -->
                     <div class="col-sm-6">
                         <button type="button" data-toggle="modal" data-target="#modal-default" class="btn btn-block btn-primary float-sm-right" style="width: fit-content">Cadastrar novo</button>
@@ -293,10 +293,10 @@ $nm_usuario = $_SESSION['nomeUsuario'];
                     <div class="col-12">
                         <div class="card">
                             <div class="card-header">
-                                <h3 class="card-title">Abaixo estão todos os produtos com cadastro na loja</h3>
+                                <h3 class="card-title">Abaixo estão todos os usuários da loja</h3>
                             </div>
                             <!-- /.card-header -->
-                            <div class="card-body">
+                            <div class="card-body overflow-auto">
                                 <table id="example1" class="table table-bordered table-striped">
                                     <thead>
                                     <tr>
@@ -390,8 +390,7 @@ $nm_usuario = $_SESSION['nomeUsuario'];
 <script>
     $(function () {
         $("#example1").DataTable({
-            "responsive": true, "lengthChange": false, "autoWidth": false,
-            "buttons": ["csv", "excel", "pdf", "print"],
+            "responsive": false, "lengthChange": false, "autoWidth": false,
             "language": {
                 "lengthMenu": " _MENU_ resultados por página",
                 "zeroRecords": "Nada encontrado para a busca",
