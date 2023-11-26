@@ -158,13 +158,17 @@ $nm_usuario = $_SESSION['nomeUsuario'];
                                 <!-- /.row -->
                             </div>
                             <!-- /.card-body -->
-                            <div class="card-footer card-header">
+                            <div class="d-flex flex-row justify-content-between p-4 align-items-center">
+                                <div style="gap:10px" class="d-flex flex-row align-items-baseline align-content-center justify-content-center">
+                                    <input onchange="pagamento_posterior()" type="checkbox" name="check" id="checkbox">
+                                    <label for="checkbox">Para pagamento posterior</label>
+                                </div>
                                 <b id="footer"></b>
-                                    <div class="card-tools">
-                                        <button onclick="concluir()" type="button" class="btn btn-success">
-                                            <i class="fas fa-check-circle"></i> Concluir
-                                        </button>
-                                    </div>
+                                <div class="card-tools">
+                                    <button onclick="concluir()" type="button" class="btn btn-success">
+                                        <i class="fas fa-check-circle"></i> Concluir
+                                    </button>
+                                </div>
                             </div>
                         </div>
                         <!-- /.card -->

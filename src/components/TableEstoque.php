@@ -32,12 +32,12 @@ class TableEstoque
                 <div class="btn-group">
                 ';
                 if ($produto['comercializado']) {
-                    echo '<button type="button" data-toggle="modal" style="width: 8vw" data-target="#modal-default_2" onclick="remove(`'.$produto['id_produto'].'`, `'.$produto['nome_produto'].'`)" class="btn btn-danger">Desativar</button>';
+                    echo '<button type="button" data-toggle="modal" style="width: fit-content" data-target="#modal-default_2" onclick="remove(`'.$produto['id_produto'].'`, `'.$produto['nome_produto'].'`)" class="btn btn-danger">Desativar</button>';
                 } else {
-                    echo '<button type="button" data-toggle="modal" style="width: 8vw" data-target="#modal-default_4" onclick="ativa(`'.$produto['id_produto'].'`, `'.$produto['nome_produto'].'`)" class="btn btn-success">Ativar</button>';
+                    echo '<button type="button" data-toggle="modal" style="width: fit-content" data-target="#modal-default_4" onclick="ativa(`'.$produto['id_produto'].'`, `'.$produto['nome_produto'].'`)" class="btn btn-success">Ativar</button>';
                 }
                 echo '
-                    <button type="button" data-toggle="modal" style="width: 8vw" data-target="#modal-default_3" onclick="atualiza(`'.$produto['qtd_estoque'].'`, `'.$produto['id_produto'].'`, `'.$produto['nome_produto'].'`,`'.number_format($produto['valor_unitario'] / 100, 2,',', '.').'`)" class="btn btn-info">Alterar</button>
+                    <button type="button" data-toggle="modal" style="width: fit-content" data-target="#modal-default_3" onclick="atualiza(`'.$produto['qtd_estoque'].'`, `'.$produto['id_produto'].'`, `'.$produto['nome_produto'].'`,`'.number_format($produto['valor_unitario'] / 100, 2,',', '.').'`)" class="btn btn-info">Alterar</button>
                 </div>
                 </td>
             </tr>';

@@ -309,7 +309,7 @@ $nm_usuario = $_SESSION['nomeUsuario'];
                                 <h3 class="card-title">Abaixo estão todos os produtos com cadastro na loja</h3>
                             </div>
                         <!-- /.card-header -->
-                            <div class="card-body">
+                            <div class="card-body overflow-auto">
                                 <table id="example1" class="table table-bordered table-striped">
                                     <thead>
                                     <tr>
@@ -407,8 +407,7 @@ $nm_usuario = $_SESSION['nomeUsuario'];
 <script>
     $(function () {
         $("#example1").DataTable({
-            "responsive": true, "lengthChange": false, "autoWidth": false,
-            "buttons": ["csv", "excel", "pdf", "print"],
+            "responsive": false, "lengthChange": false, "autoWidth": false,
             "language": {
                 "lengthMenu": " _MENU_ resultados por página",
                 "zeroRecords": "Nada encontrado para a busca",

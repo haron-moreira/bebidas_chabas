@@ -6,6 +6,8 @@ var soma = 0;
 var json_produtos = {}
 json_produtos = { "produtos": []}
 var produtosList = {}
+var pagamento = false
+var dados = {}
 
 produto.addEventListener("click", () => {
 
@@ -119,15 +121,42 @@ function somaMultipla(elemento) {
 
 }
 
+function pagamento_posterior() {
+    pagamento = !pagamento
+    console.log(pagamento)
+}
+
+function defineDados(nome, email, tel) {
+    dados['nome'] = nome
+    dados['email'] = email
+    dados['tel'] = tel
+}
+
 function concluir() {
+
+
+
+    if (pagamento) {
+        pagamento = 0
+
+        let nome = prompt("Insira o nome do responsável pelo pagamento posterior.")
+        let email = prompt("Insira o e-mail do responsável pelo pagamento posterior.")
+        let telefone = prompt("Insira o telefone do responsável pelo pagamento posterior.")
+
+        defineDados(nome, email, telefone)
+
+    } else {
+        pagamento = 1
+    }
+
     $.ajax({
         url: '/api/vender-via-front.php',
         method: 'POST',
-        data: {'produtos': json_produtos},
+        data: {'produtos': json_produtos, 'pagamento_posterior': pagamento, 'dados_cliente': dados},
         dataType: 'json'
     })
         .always(function(result) {
-
+            console.log({'pr': json_produtos, 'pg': pagamento})
             switch (result.status) {
                 case 200:
                     alert("Venda realizada com sucesso");

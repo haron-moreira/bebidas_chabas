@@ -1,8 +1,9 @@
 <?php
 
-use HaronMoreira\BebidasChabas\components\Menu;
-use HaronMoreira\BebidasChabas\components\TableUsers;
+use HaronMoreira\BebidasChabas\components\TableCaderneta;
+use HaronMoreira\BebidasChabas\components\TableEstoque;
 use HaronMoreira\BebidasChabas\services\SessionValidate;
+use HaronMoreira\BebidasChabas\components\Menu;
 
 require 'vendor/autoload.php';
 
@@ -66,6 +67,11 @@ $nm_usuario = $_SESSION['nomeUsuario'];
 
         <!-- Right navbar links -->
         <ul class="navbar-nav ml-auto">
+            <!-- Navbar Search -->
+
+
+
+
             <!-- Notifications Dropdown Menu -->
             <li class="nav-item dropdown">
                 <a class="nav-link" data-toggle="dropdown" href="#" aria-expanded="false">
@@ -88,7 +94,6 @@ $nm_usuario = $_SESSION['nomeUsuario'];
     <!-- /.navbar -->
 
     <!-- Main Sidebar Container -->
-
     <?php echo Menu::EchoMenu($nv_acesso)?>
 
     <!-- Content Wrapper. Contains page content -->
@@ -98,7 +103,7 @@ $nm_usuario = $_SESSION['nomeUsuario'];
             <div class="container-fluid">
                 <div class="row mb-2">
                     <div class="col-sm-6">
-                        <h1 class="m-0">Ver Usuários</h1>
+                        <h1 class="m-0">Ver Produtos</h1>
                     </div><!-- /.col -->
                     <div class="col-sm-6">
                         <button type="button" data-toggle="modal" data-target="#modal-default" class="btn btn-block btn-primary float-sm-right" style="width: fit-content">Cadastrar novo</button>
@@ -116,7 +121,7 @@ $nm_usuario = $_SESSION['nomeUsuario'];
                 <div class="modal-dialog">
                     <div class="modal-content">
                         <div class="modal-header">
-                            <h4 class="modal-title">Desativar Usuário</h4>
+                            <h4 class="modal-title">Desativar estoque de produto</h4>
                             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                 <span aria-hidden="true">×</span>
                             </button>
@@ -128,12 +133,12 @@ $nm_usuario = $_SESSION['nomeUsuario'];
                                 </div>
                                 <!-- /.card-header -->
                                 <!-- form start -->
-                                <form id="form-remove" action="lib/desativa_usuario.php" method="post">
+                                <form id="form-remove" action="lib/desativa_produto.php" method="post">
                                     <div class="card-body">
-                                        <input type="hidden" value="" id="id_usuario_remove" name="id_usuario_remove">
+                                        <input type="hidden" value="" id="id_produto_remove" name="id_produto_remove">
                                         <div class="form-group">
-                                            <label for="nome_usuario_remove">Nome do Usuário</label>
-                                            <input type="text" class="form-control" readonly id="nome_usuario_remove" name="nome_usuario_remove" placeholder="Vodka Absolut">
+                                            <label for="nome_produto_remove">Nome do Produto</label>
+                                            <input type="text" class="form-control" readonly id="nome_produto_remove" name="nome_produto_remove" placeholder="Vodka Absolut">
                                         </div>
                                     </div>
                                 </form>
@@ -154,7 +159,7 @@ $nm_usuario = $_SESSION['nomeUsuario'];
                 <div class="modal-dialog">
                     <div class="modal-content">
                         <div class="modal-header">
-                            <h4 class="modal-title">Ativar Usuário</h4>
+                            <h4 class="modal-title">Ativar estoque de produto</h4>
                             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                 <span aria-hidden="true">×</span>
                             </button>
@@ -166,12 +171,12 @@ $nm_usuario = $_SESSION['nomeUsuario'];
                                 </div>
                                 <!-- /.card-header -->
                                 <!-- form start -->
-                                <form id="form-ativa" action="lib/ativa_usuario.php" method="post">
+                                <form id="form-ativa" action="lib/ativa_produto.php" method="post">
                                     <div class="card-body">
-                                        <input type="hidden" value="" id="id_usuario_ativa" name="id_usuario_ativa">
+                                        <input type="hidden" value="" id="id_produto_ativa" name="id_produto_ativa">
                                         <div class="form-group">
-                                            <label for="nome_usuario_ativa">Nome do Usuário</label>
-                                            <input type="text" class="form-control" readonly id="nome_usuario_ativa" name="nome_usuario_ativa" placeholder="Vodka Absolut">
+                                            <label for="nome_produto_ativa">Nome do Produto</label>
+                                            <input type="text" class="form-control" readonly id="nome_produto_ativa" name="nome_produto_ativa" placeholder="Vodka Absolut">
                                         </div>
                                     </div>
                                 </form>
@@ -192,7 +197,7 @@ $nm_usuario = $_SESSION['nomeUsuario'];
                 <div class="modal-dialog">
                     <div class="modal-content">
                         <div class="modal-header">
-                            <h4 class="modal-title">Atualizar Usuário</h4>
+                            <h4 class="modal-title">Atualizar estoque de produto</h4>
                             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                 <span aria-hidden="true">×</span>
                             </button>
@@ -200,24 +205,28 @@ $nm_usuario = $_SESSION['nomeUsuario'];
                         <div class="modal-body">
                             <div class="card card-primary">
                                 <div class="card-header">
-                                    <h3 class="card-title">Alterações</h3>
+                                    <h3 class="card-title">Deseja mesmo alterar o produto?</h3>
                                 </div>
                                 <!-- /.card-header -->
                                 <!-- form start -->
-                                <form id="form-atualiza" action="lib/atualiza_usuario.php" method="post">
+                                <form id="form-atualiza" action="lib/atualizar_estoque.php" method="post">
                                     <div class="card-body">
-                                        <input type="hidden" value="" id="id_usuario_atualiza" name="id_usuario_atualiza">
+                                        <input type="hidden" value="" id="id_produto_atualiza" name="id_produto_atualiza">
                                         <div class="form-group">
-                                            <label for="nome_produto_atualiza">Nome do Usuário</label>
-                                            <input type="text" class="form-control" id="nome_usuario_atualiza" name="nome_usuario_atualiza" placeholder="Nome">
+                                            <label for="nome_produto_atualiza">Nome do Produto</label>
+                                            <input type="text" class="form-control" readonly id="nome_produto_atualiza" name="nome_produto_atualiza" placeholder="Vodka Absolut">
                                         </div>
                                         <div class="form-group">
-                                            <label for="nv_acesso">Tipo de Usuário</label>
-                                            <select class="form-control" name="nv_acesso" id="nv_acesso">
-                                                <option value="">Selecione</option>
-                                                <option value="1">Comum</option>
-                                                <option value="2">Admin</option>
-                                            </select>
+                                            <label for="qtd_atual">Quantidade Atual</label>
+                                            <input type="text" class="form-control" readonly id="qtd_atual" name="qtd_atual" placeholder="1">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="qtd_recebida">Quantidade Para Adicionar</label>
+                                            <input type="number" min="0" class="form-control" id="qtd_recebida" name="qtd_recebida" placeholder="100">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="valor_unitario">Valor</label>
+                                            <input type="text" class="form-control" id="valor_unitario" name="valor_unitario">
                                         </div>
                                     </div>
                                 </form>
@@ -225,7 +234,7 @@ $nm_usuario = $_SESSION['nomeUsuario'];
                         </div>
                         <div class="modal-footer justify-content-between">
                             <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
-                            <button type="submit" class="btn btn-primary" form="form-atualiza">Salvar</button>
+                            <button type="submit" class="btn btn-primary" form="form-atualiza">Renovar Estoque</button>
                         </div>
                     </div>
                     <!-- /.modal-content -->
@@ -239,7 +248,7 @@ $nm_usuario = $_SESSION['nomeUsuario'];
                 <div class="modal-dialog">
                     <div class="modal-content">
                         <div class="modal-header">
-                            <h4 class="modal-title">Cadastrar novo usuário</h4>
+                            <h4 class="modal-title">Cadastrar novo produto</h4>
                             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                 <span aria-hidden="true">×</span>
                             </button>
@@ -251,27 +260,32 @@ $nm_usuario = $_SESSION['nomeUsuario'];
                                 </div>
                                 <!-- /.card-header -->
                                 <!-- form start -->
-                                <form id="form-cadastro" action="lib/novo_usuario.php" method="post">
+                                <form id="form-cadastro" action="lib/cadastra_produto.php" method="post">
                                     <div class="card-body">
                                         <div class="form-group">
-                                            <label for="nome">Nome do Usuário</label>
-                                            <input type="text" class="form-control" id="nome" name="nome" placeholder="Nome">
+                                            <label for="nome_produto">Nome do Produto</label>
+                                            <input type="text" class="form-control" id="nome_produto" name="nome_produto" placeholder="Vodka Absolut">
                                         </div>
                                         <div class="form-group">
-                                            <label for="login">Login do Usuário</label>
-                                            <input type="text" class="form-control" id="login" name="login" placeholder="Login">
+                                            <label for="nome_fabricante">Nome do Fabricante</label>
+                                            <input type="text" class="form-control" id="nome_fabricante" name="nome_fabricante" placeholder="Absolut Company">
                                         </div>
                                         <div class="form-group">
-                                            <label for="senha">Senha Inicial</label>
-                                            <input type="text" class="form-control" id="senha" name="senha" placeholder="Senha">
+                                            <label for="qtd">Quantidade em Estoque</label>
+                                            <input type="text" class="form-control" id="qtd" name="qtd" placeholder="1000">
                                         </div>
                                         <div class="form-group">
-                                            <label for="nv_acesso">Tipo de Usuário</label>
-                                            <select class="form-control" name="nv_acesso" id="nv_acesso">
+                                            <label for="tipo_volume">Tipo de Volume</label>
+                                            <select class="form-control" name="tipo_volume" id="tipo_volume">
                                                 <option value="">Selecione</option>
-                                                <option value="1">Comum</option>
-                                                <option value="2">Admin</option>
+                                                <option value="ML">ML</option>
+                                                <option value="Unidades">Unidade</option>
+                                                <option value="Gramas">Gramas</option>
                                             </select>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="qtd_volume">Quantidade de Volume (cada unidade do produto)</label>
+                                            <input type="number" class="form-control" id="qtd_volume" name="qtd_volume" placeholder="1000 ML / 1000 Unidade / 1000 Gramas">
                                         </div>
                                     </div>
                                 </form>
@@ -293,7 +307,7 @@ $nm_usuario = $_SESSION['nomeUsuario'];
                     <div class="col-12">
                         <div class="card">
                             <div class="card-header">
-                                <h3 class="card-title">Abaixo estão todos os usuários da loja</h3>
+                                <h3 class="card-title">Abaixo estão todos os produtos com cadastro na loja</h3>
                             </div>
                             <!-- /.card-header -->
                             <div class="card-body overflow-auto">
@@ -301,25 +315,31 @@ $nm_usuario = $_SESSION['nomeUsuario'];
                                     <thead>
                                     <tr>
                                         <th>#</th>
-                                        <th>Nome</th>
-                                        <th>Login</th>
-                                        <th>Tipo</th>
-                                        <th>Status</th>
-                                        <th>Ações</th>
+                                        <th>Valor da Compra</th>
+                                        <th>Quantidade de Produtos</th>
+                                        <th>Data de Compra</th>
+                                        <th>Pago?</th>
+                                        <th>Responsável</th>
+                                        <th>Telefone</th>
+                                        <th>E-mail</th>
+                                        <th>Registrar Pagamento</th>
 
                                     </tr>
                                     </thead>
                                     <tbody>
-                                    <?php TableUsers::EchoTable();?>
+                                    <?php TableCaderneta::EchoTable();?>
                                     </tbody>
                                     <tfoot>
                                     <tr>
                                         <th>#</th>
-                                        <th>Nome</th>
-                                        <th>Login</th>
-                                        <th>Tipo</th>
-                                        <th>Status</th>
-                                        <th>Ações</th>
+                                        <th>Valor da Compra</th>
+                                        <th>Quantidade de Produtos</th>
+                                        <th>Data de Compra</th>
+                                        <th>Pago?</th>
+                                        <th>Responsável</th>
+                                        <th>Telefone</th>
+                                        <th>E-mail</th>
+                                        <th>Registrar Pagamento</th>
                                     </tr>
                                     </tfoot>
                                 </table>
@@ -386,11 +406,11 @@ $nm_usuario = $_SESSION['nomeUsuario'];
 <script src="plugins/datatables-buttons/js/buttons.html5.min.js"></script>
 <script src="plugins/datatables-buttons/js/buttons.print.min.js"></script>
 <script src="plugins/datatables-buttons/js/buttons.colVis.min.js"></script>
-<script src="js/gerenciar_usuario.js"></script>
+<script src="js/gerenciar_produto.js"></script>
 <script>
     $(function () {
         $("#example1").DataTable({
-            "responsive": false, "lengthChange": false, "autoWidth": false,
+            "responsive": false, "lengthChange": false, "autoWidth": false, "ordering": false,
             "language": {
                 "lengthMenu": " _MENU_ resultados por página",
                 "zeroRecords": "Nada encontrado para a busca",
@@ -402,6 +422,33 @@ $nm_usuario = $_SESSION['nomeUsuario'];
             }
         }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
     });
+
+    function pagar(id) {
+        const retorno = fetch(`/api/pagar/${id}`);
+
+        retorno.then(() => {
+
+        })
+
+        $.ajax({
+            url: `/api/pagar.php?id=${id}`,
+            method: 'PUT',
+            dataType: 'json'
+        })
+            .always(function(result) {
+
+                switch (result.status) {
+                    case 200:
+                        alert("Pagamento cadastrado.");
+                        location.reload();
+                        break;
+
+                    default:
+                        alert("Erro interno");
+                        break;
+                }
+            });
+    }
 </script>
 </body>
 </html>

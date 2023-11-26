@@ -4,6 +4,7 @@ namespace HaronMoreira\BebidasChabas\components;
 
 use Dompdf\Dompdf;
 use Dompdf\Options;
+use HaronMoreira\BebidasChabas\services\GetLastInsertId;
 
 class GeraPdfNotaVenda
 {
@@ -19,6 +20,8 @@ class GeraPdfNotaVenda
         $dompdf = new Dompdf($options);
         $tableBody = "";
         $id = 1;
+
+        $id_nota = GetLastInsertId::Get();
 
         $valor_final = "R$ " . number_format($produtos['soma'], 2,",", ".");
 
@@ -47,6 +50,7 @@ class GeraPdfNotaVenda
 <body style="display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 1vh;text-align: center;">
 <header style="display: flex; flex-direction: column; align-items: center; justify-content: center;">
   <h1>Registro de Venda</h1>
+  <h5>Numero da Nota: '.$id_nota.'</h5>
   <h5>Via única</h5>
   <h3>Bebidas Chabás</h3>
   <p>Data/hora: '.$agora.'</p>
