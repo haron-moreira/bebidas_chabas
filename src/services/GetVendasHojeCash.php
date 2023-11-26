@@ -6,7 +6,7 @@ class GetVendasHojeCash
 {
     public static function Get()
     {
-        $query = "SELECT SUM(valor / 100) as valor FROM venda WHERE DAY(dt_compra) = DAY(curdate());";
+        $query = "SELECT SUM(valor / 100) as valor FROM venda WHERE DAY(dt_compra) = DAY(curdate()) and status_pagamento = 1;";
 
         $pdo = ConexaoBanco::Conexao();
         $sth = $pdo->prepare($query);

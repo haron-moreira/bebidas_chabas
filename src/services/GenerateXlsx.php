@@ -24,6 +24,7 @@ class GenerateXlsx
             $sheet->setCellValue('C1', 'Motivo');
             $sheet->setCellValue('D1', 'Referencia');
 
+
             $row = 2;
             foreach ($gastos as $gasto) {
                 $sheet->setCellValue('A' . $row, $gasto['ID']);
@@ -41,6 +42,7 @@ class GenerateXlsx
             $newSheet->setCellValue('B1', 'Valor');
             $newSheet->setCellValue('C1', 'Quantidade de Produtos');
             $newSheet->setCellValue('D1', 'Referencia');
+            $newSheet->setCellValue('E1', 'Pago');
 
             $row = 2;
             foreach ($vendas as $venda) {
@@ -49,9 +51,9 @@ class GenerateXlsx
                 $newSheet->setCellValue('B' . $row, $venda['Valor']);
                 $newSheet->setCellValue('C' . $row, $venda['Produtos']);
                 $newSheet->setCellValue('D' . $row, $venda['Referencia']);
+                $newSheet->setCellValue('E' . $row, $venda['Pago']);
                 $row++;
             }
-
 
             $writer = new Xlsx($spreadsheet);
             $writer->save('../files/faturamento.xlsx');
@@ -61,7 +63,5 @@ class GenerateXlsx
             error_log($e);
             return False;
         }
-
-
     }
 }

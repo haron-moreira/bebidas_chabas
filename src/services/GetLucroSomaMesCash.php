@@ -8,7 +8,7 @@ class GetLucroSomaMesCash
     {
         $query = "SELECT ((SELECT SUM(valor) 
                             FROM venda 
-                            WHERE MONTH(dt_compra) = MONTH(curdate())) - SUM(gasto_mes)) / 100 as valor 
+                            WHERE status_pagamento = 1 AND MONTH(dt_compra) = MONTH(curdate())) - SUM(gasto_mes)) / 100 as valor 
                     FROM faturamento WHERE MONTH(dt_referencia) = MONTH(curdate());";
 
         $pdo = ConexaoBanco::Conexao();

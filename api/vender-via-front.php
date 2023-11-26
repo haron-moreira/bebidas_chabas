@@ -9,6 +9,10 @@ require '../vendor/autoload.php';
 header("Content-type: application/json");
 
 $produtos = $_POST['produtos'];
+$pagamento = $_POST['pagamento_posterior'];
+$dados = $_POST['dados_cliente'];
+
+error_log(json_encode($_POST));
 
 
 foreach ($produtos['produtos'] as $key => $produto) {
@@ -26,7 +30,8 @@ foreach ($produtos['produtos'] as $key => $produto) {
 }
 
 if ($validacao) {
-    if (VenderViaFront::Vender($produtos)) {
+
+    if (VenderViaFront::Vender($produtos, $pagamento, $dados)) {
         http_response_code(200);
         echo json_encode(['status'=>200]);
         die();
